@@ -1,26 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import Navbar from "@/components/site/Navbar";
+import Hero from "@/components/site/Hero";
+import Reviews from "@/components/site/Reviews";
+import Showcase from "@/components/site/Showcase";
+import Features from "@/components/site/Features";
+import StoreExperience from "@/components/site/StoreExperience";
+import Locations from "@/components/site/Locations";
+import ExperienceBanner from "@/components/site/ExperienceBanner";
+import Faq from "@/components/site/Faq";
+import Footer from "@/components/site/Footer";
+import FloatingActions from "@/components/site/FloatingActions";
+import LoadingScreen from "@/components/site/LoadingScreen";
+import Cursor from "@/components/site/Cursor";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Dj's iStore — Punjab's Most Trusted iPhone Destination" },
+      { name: "description", content: "Genuine iPhones, Open Box devices and premium Apple accessories in Chandigarh & Patiala. Trade-in, sell or upgrade with complete trust." },
+      { property: "og:title", content: "Dj's iStore — Premium iPhone Showroom" },
+      { property: "og:description", content: "Luxury Apple experience in Chandigarh & Patiala." },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="relative noise">
+      <LoadingScreen />
+      <Cursor />
+      <Navbar />
+      <main>
+        <Hero />
+        <Reviews />
+        <Showcase />
+        <Features />
+        <StoreExperience />
+        <Locations />
+        <ExperienceBanner />
+        <Faq />
+      </main>
+      <Footer />
+      <FloatingActions />
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
